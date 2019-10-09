@@ -16,7 +16,11 @@
       autofill inputs for state and campgrounds -->
     </main>
     <footer>
-        <span>&copy;2019 StickWithIt</span>
+        <small>&copy;<span id="footer-year"></span> StickWithIt</small>
     </footer>
+    <script>
+        var date = new Date();
+        document.getElementById("footer-year").innerHTML = date.getFullYear();
+      </script>
   </body>
 </html>
