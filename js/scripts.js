@@ -8,5 +8,6 @@ displayCopyrightYear();
 
 function stateSearch() {
   let state = document.getElementById("selectStateList").value;
-  alert(state);
+  console.log(`Returned from fetch: ${fetchState(state)}`);
 }
+
