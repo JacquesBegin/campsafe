@@ -9,7 +9,14 @@ footer {
   bottom: 0;
   width: 100%;
   padding: 5px;
-  background-color: rgb(6, 102, 46);
+  background-color: #06662e;
   color: white;
   text-align: center;
+}
+
+#selectStateButton {
+  padding: 3px 10px;
+  color: white;
+  background-color: #06662e;
+  border-radius: 5px;
 }
