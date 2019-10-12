@@ -52,6 +52,7 @@ function displayCampgroundList(campgroundDivs) {
   console.log("campgroundDivs:", campgroundDivs);
 
   let campgroundSection = document.getElementById("campgroundList");
+  campgroundSection.innerHTML = "";
   for (let x = 0; x < campgroundDivs.length; x++) {
     console.log("div: ", campgroundDivs[x]);
     campgroundSection.append(campgroundDivs[x]);
