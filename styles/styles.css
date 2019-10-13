@@ -34,7 +34,15 @@ footer {
 }
 
 .campgroundItem {
-  /* height: 2em; */
   padding: .5em;
-  vertical-align: middle;
+}
+
+.facilityName {
+}
+
+.facilityAlert {
+  background-color: #d40d0d;
+  color: #ffffff;
+  padding: 0 5px;
+  float: right;
 }
