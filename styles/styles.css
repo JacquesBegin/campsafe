@@ -21,8 +21,9 @@ footer {
   border-radius: 5px;
 }
 
-#campgroundList {
-  margin: 50px 0 0 0;
-  padding: 15px 0 0 0;
-  border-top: 2px solid black;
+#listHeader {
+  font-size: 1.3em;
+  margin: 50px 0 20px 0;
+  padding: 0 0 10px  0;
+  border-bottom: 3px solid black;
 }
