@@ -88,6 +88,10 @@ function displayCampgroundList(campgroundDivs) {
   campgroundSection.append(listBody);
 }
 
+function createPopupAlert(alertText) {
+  let popupAlert = document.createElement("div");
+}
+
 function buildCampgroundList(campgrounds) {
   console.log("campground:", campgrounds);
   let campgroundElements = [];
@@ -108,7 +112,9 @@ function buildCampgroundList(campgrounds) {
     facilityAlert.style.backgroundColor = "#d40d0d";
     if ((Math.floor(Math.random() * 4)) < 2) {
       facilityAlert.innerHTML = "!! ALERT !!";
-
+      element.addEventListener("click", function() {
+        createPopupAlert()
+      });
     }
     element.append(facilityAlert);
 
@@ -139,9 +145,10 @@ function stateSearch() {
   // Use the following line to fetch the campground list once
   // the server has been setup.
   // console.log(`Returned from fetch: ${fetchState(state)}`);
-
-
 }
+
+
+
 
 
 
