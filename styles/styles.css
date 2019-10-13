@@ -46,3 +46,13 @@ footer {
   padding: 0 5px;
   float: right;
 }
+
+.popupAlert {
+  display: none;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: (100% - 100px);
+  left: (100% - 100px);
+  background-color: pink;
+}
