@@ -48,23 +48,23 @@ let campgrounds = [
   },
   {
     facilityName: "Great Big State Park",
-    state: "UT"
+    state: "ID"
   },
   {
     facilityName: "Great Small State Park",
-    state: "UT"
+    state: "ID"
   },
   {
     facilityName: "Rocky Road Highlands",
-    state: "UT"
+    state: "ID"
   },
   {
     facilityName: "The Arches",
-    state: "UT"
+    state: "ID"
   },
   {
     facilityName: "Red Fire Mountains",
-    state: "UT"
+    state: "ID"
   }
 ];
 
@@ -94,7 +94,11 @@ function buildCampgroundList(campgrounds) {
   for(let x = 0; x < campgrounds.length; x++) {
     let element;
     element = document.createElement("div");
+    element.className = "campgroundItem";
     element.innerHTML = campgrounds[x].facilityName;
+    if (x % 2 !== 0) {
+      element.style.backgroundColor = "#ebebeb";
+    }
     campgroundElements.push(element);
   }
   return campgroundElements;
