@@ -68,6 +68,15 @@ let campgrounds = [
   }
 ];
 
+let alertTypes = [
+  "Bear spotted in the park! Use proper food storage techniques.",
+  "Heavy rain is forecasted for this area. Flooding could occur!",
+  "Forest fire near campground! Camping is prohibited until further notice.",
+  "Rock slide on park road 3A! Use alternate routes."
+]
+
+
+
 function displayCampgroundList(campgroundDivs) {
   console.log("campgroundDivs:", campgroundDivs);
 
@@ -88,8 +97,24 @@ function displayCampgroundList(campgroundDivs) {
   campgroundSection.append(listBody);
 }
 
+function deletePopupAlert() {
+
+}
+
 function createPopupAlert(alertText) {
+  let popupAlertHolder = document.getElementsByClassName("popupAlertHolder")[0];
+  if (popupAlertHolder) {
+    popupAlertHolder.removeChild(popupAlertHolder.firstChild);
+  } else {
+    popupAlertHolder = document.createElement("div");
+    popupAlertHolder.className = "popupAlertHolder";
+  }
   let popupAlert = document.createElement("div");
+  popupAlert.className = "popupAlert";
+  popupAlert.innerHTML = alertText;
+  popupAlertHolder.append(popupAlert);
+  let body = document.getElementsByTagName("body")[0];
+  body.append(popupAlertHolder);
 }
 
 function buildCampgroundList(campgrounds) {
@@ -112,8 +137,9 @@ function buildCampgroundList(campgrounds) {
     facilityAlert.style.backgroundColor = "#d40d0d";
     if ((Math.floor(Math.random() * 4)) < 2) {
       facilityAlert.innerHTML = "!! ALERT !!";
+      let tmpAlert = alertTypes[Math.floor(Math.random() * 4)];
       element.addEventListener("click", function() {
-        createPopupAlert()
+        createPopupAlert(tmpAlert);
       });
     }
     element.append(facilityAlert);
