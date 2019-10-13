@@ -45,6 +45,26 @@ let campgrounds = [
     sitesWithWaterHookup: "N",
     sitesWithWaterfront: "N",
     state: "UT"
+  },
+  {
+    facilityName: "Great Big State Park",
+    state: "UT"
+  },
+  {
+    facilityName: "Great Small State Park",
+    state: "UT"
+  },
+  {
+    facilityName: "Rocky Road Highlands",
+    state: "UT"
+  },
+  {
+    facilityName: "The Arches",
+    state: "UT"
+  },
+  {
+    facilityName: "Red Fire Mountains",
+    state: "UT"
   }
 ];
 
@@ -55,14 +75,17 @@ function displayCampgroundList(campgroundDivs) {
   campgroundSection.innerHTML = "";
 
   let listHeader = document.createElement("div");
+  let listBody = document.createElement("div");
   listHeader.innerHTML = "Available Campgrounds";
   //styles are not being applied
   listHeader.id = "listHeader";
+  listBody.id = "listBody";
   campgroundSection.append(listHeader);
   for (let x = 0; x < campgroundDivs.length; x++) {
     console.log("div: ", campgroundDivs[x]);
-    campgroundSection.append(campgroundDivs[x]);
+    listBody.append(campgroundDivs[x]);
   }
+  campgroundSection.append(listBody);
 }
 
 function buildCampgroundList(campgrounds) {
