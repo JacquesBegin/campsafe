@@ -53,6 +53,12 @@ function displayCampgroundList(campgroundDivs) {
 
   let campgroundSection = document.getElementById("campgroundList");
   campgroundSection.innerHTML = "";
+
+  let listHeader = document.createElement("div");
+  listHeader.innerHTML = "Available Campgrounds";
+  //styles are not being applied
+  listHeader.id = "listHeader";
+  campgroundSection.append(listHeader);
   for (let x = 0; x < campgroundDivs.length; x++) {
     console.log("div: ", campgroundDivs[x]);
     campgroundSection.append(campgroundDivs[x]);
