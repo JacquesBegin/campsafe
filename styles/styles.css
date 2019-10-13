@@ -51,8 +51,12 @@ footer {
   /* display: none; */
   width: 200px;
   height: 200px;
-  /* position: absolute;
-  top: 50%;
-  left: 100px; */
+  position: relative;
   background-color: pink;
+}
+
+.closeAlert {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
