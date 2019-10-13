@@ -98,7 +98,8 @@ function displayCampgroundList(campgroundDivs) {
 }
 
 function deletePopupAlert() {
-
+  let popupAlertHolder = document.getElementsByClassName("popupAlertHolder")[0];
+  popupAlertHolder.parentNode.removeChild(popupAlertHolder);
 }
 
 function createPopupAlert(alertText) {
@@ -112,6 +113,11 @@ function createPopupAlert(alertText) {
   let popupAlert = document.createElement("div");
   popupAlert.className = "popupAlert";
   popupAlert.innerHTML = alertText;
+  let popupAlertClose = document.createElement("div");
+  popupAlertClose.className = "closeAlert";
+  popupAlertClose.innerHTML = "CLOSE MESSAGE";
+  popupAlertClose.addEventListener("click", deletePopupAlert);
+  popupAlert.append(popupAlertClose);
   popupAlertHolder.append(popupAlert);
   let body = document.getElementsByTagName("body")[0];
   body.append(popupAlertHolder);
