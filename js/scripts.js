@@ -95,7 +95,23 @@ function buildCampgroundList(campgrounds) {
     let element;
     element = document.createElement("div");
     element.className = "campgroundItem";
-    element.innerHTML = campgrounds[x].facilityName;
+
+    let facilityName = document.createElement("span");
+    facilityName.className = "facilityName";
+    facilityName.innerHTML = campgrounds[x].facilityName;
+    element.append(facilityName);
+
+    // This is a permanent element that is arbitrarily assigning data.
+    // Actual data will have to be returned from Active API.
+    let facilityAlert = document.createElement("span");
+    facilityAlert.className = "facilityAlert";
+    facilityAlert.style.backgroundColor = "#d40d0d";
+    if ((Math.floor(Math.random() * 4)) < 2) {
+      facilityAlert.innerHTML = "!! ALERT !!";
+
+    }
+    element.append(facilityAlert);
+
     if (x % 2 !== 0) {
       element.style.backgroundColor = "#ebebeb";
     }
