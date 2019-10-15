@@ -47,23 +47,23 @@ const campgrounds = [
   },
   {
     facilityName: "Great Big State Park",
-    state: "ID"
+    state: "AL"
   },
   {
     facilityName: "Great Small State Park",
-    state: "ID"
+    state: "AL"
   },
   {
     facilityName: "Rocky Road Highlands",
-    state: "ID"
+    state: "AL"
   },
   {
     facilityName: "The Arches",
-    state: "ID"
+    state: "AL"
   },
   {
     facilityName: "Red Fire Mountains",
-    state: "ID"
+    state: "AL"
   }
 ];
 
@@ -157,17 +157,15 @@ function deletePopupAlert() {
 }
 
 function openPopupAlert(alertData) {
-  
+
 }
 
-function createPopupAlert(alertText) {
-  let popupAlertHolder = document.getElementsByClassName("popupAlertHolder")[0];
-  if (popupAlertHolder) {
-    popupAlertHolder.removeChild(popupAlertHolder.firstChild);
-  } else {
-    popupAlertHolder = document.createElement("div");
-    popupAlertHolder.className = "popupAlertHolder";
-  }
+function createPopupAlert(campground, alertText) {
+  let popupAlertHolder = document.getElementById("popupAlertHolder");
+  // popupAlertHolder.removeChild(popupAlertHolder.firstChild);
+  // popupAlertHolder = document.createElement("div");
+  // popupAlertHolder.className = "popupAlertHolder";
+
   let popupAlert = document.createElement("div");
   popupAlert.className = "popupAlert";
   popupAlert.innerHTML = alertText;
@@ -223,7 +221,7 @@ function buildCampgroundList(campgrounds) {
       facilityAlert.innerHTML = "!! ALERT !!";
       let tmpAlert = alertTypes[Math.floor(Math.random() * 4)];
       element.addEventListener("click", function() {
-        createPopupAlert(tmpAlert);
+        createPopupAlert(campgrounds[x], tmpAlert);
       });
     }
     element.append(facilityAlert);
