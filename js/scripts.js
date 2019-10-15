@@ -1,4 +1,3 @@
-document.getElementById("selectStateButton").addEventListener("click", stateSearch);
 
 const campgrounds = [
   {
@@ -76,8 +75,8 @@ const alertTypes = [
 ];
 
 const states = {
-  AK: "Alaska",
   AL: "Alabama",
+  AK: "Alaska",
   AZ: "Arizona",
   AR: "Arkansas",
   CA: "California",
@@ -129,26 +128,28 @@ const states = {
 };
 
 
-
-function displayCampgroundList(campgroundDivs) {
-  console.log("campgroundDivs:", campgroundDivs);
-
-  let campgroundSection = document.getElementById("campgroundList");
-  campgroundSection.innerHTML = "";
-
-  let listHeader = document.createElement("div");
-  let listBody = document.createElement("div");
-  listHeader.innerHTML = "Available Campgrounds";
-  //styles are not being applied
-  listHeader.id = "listHeader";
-  listBody.id = "listBody";
-  campgroundSection.append(listHeader);
-  for (let x = 0; x < campgroundDivs.length; x++) {
-    console.log("div: ", campgroundDivs[x]);
-    listBody.append(campgroundDivs[x]);
+function populateStateList(stateList) {
+  let statesElement = document.getElementById("selectStateList");
+  for (let x in stateList) {
+    let currentState = document.createElement("option");
+    currentState.value = x;
+    currentState.innerHTML = stateList[x];
+    statesElement.append(currentState);
   }
-  campgroundSection.append(listBody);
 }
+populateStateList(states);
+
+function stateSearch() {
+  let state = document.getElementById("selectStateList").value;
+  getCampgrounds(state);
+  
+  // Use the following line to fetch the campground list once
+  // the server has been setup.
+  // console.log(`Returned from fetch: ${fetchState(state)}`);
+}
+
+document.getElementById("selectStateButton").addEventListener("click", stateSearch);
+
 
 function deletePopupAlert() {
   let popupAlertHolder = document.getElementsByClassName("popupAlertHolder")[0];
@@ -174,6 +175,26 @@ function createPopupAlert(alertText) {
   popupAlertHolder.append(popupAlert);
   let body = document.getElementsByTagName("body")[0];
   body.append(popupAlertHolder);
+}
+
+function displayCampgroundList(campgroundDivs) {
+  console.log("campgroundDivs:", campgroundDivs);
+
+  let campgroundSection = document.getElementById("campgroundList");
+  campgroundSection.innerHTML = "";
+
+  let listHeader = document.createElement("div");
+  let listBody = document.createElement("div");
+  listHeader.innerHTML = "Available Campgrounds";
+  //styles are not being applied
+  listHeader.id = "listHeader";
+  listBody.id = "listBody";
+  campgroundSection.append(listHeader);
+  for (let x = 0; x < campgroundDivs.length; x++) {
+    console.log("div: ", campgroundDivs[x]);
+    listBody.append(campgroundDivs[x]);
+  }
+  campgroundSection.append(listBody);
 }
 
 function buildCampgroundList(campgrounds) {
@@ -223,20 +244,11 @@ function getCampgrounds(state) {
   }
 }
 
-function stateSearch() {
-  let state = document.getElementById("selectStateList").value;
-  getCampgrounds(state);
-  
-  // Use the following line to fetch the campground list once
-  // the server has been setup.
-  // console.log(`Returned from fetch: ${fetchState(state)}`);
-}
 
 
 
 
-
-
+// Used to display the current year in the footer's copyright element
 function displayCopyrightYear() {
   let date = new Date;
   document.getElementById("footerYear").innerHTML = date.getFullYear();
