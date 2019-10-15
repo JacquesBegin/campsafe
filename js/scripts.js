@@ -152,31 +152,46 @@ document.getElementById("selectStateButton").addEventListener("click", stateSear
 
 
 function deletePopupAlert() {
-  let popupAlertHolder = document.getElementsByClassName("popupAlertHolder")[0];
-  popupAlertHolder.parentNode.removeChild(popupAlertHolder);
+  let popupAlertHolder = document.getElementById("popupAlertHolder");
+  // popupAlertHolder.parentNode.removeChild(popupAlertHolder);
+  popupAlertHolder.removeChild(document.getElementById("popupAlertHolderTmp"));
 }
 
-function openPopupAlert(alertData) {
-
+function openPopupAlert(campgroundData, alertData) {
+  // let popupAlertHolder = document.getElementById("popupAlertHolder");
+  let popupAlertHolderTmp = document.createElement("div");
+  popupAlertHolderTmp.id = "popupAlertHolderTmp";
+  let alertFacilityName = document.createElement("div");
+  alertFacilityName.id = "popupAlertFacilityName";
+  alertFacilityName.innerHTML = campgroundData.facilityName;
+  popupAlertHolderTmp.append(alertFacilityName);
+  let alertClosePopup = document.createElement("div");
+  alertClosePopup.id = "closePopupAlert";
+  alertClosePopup.innerHTML = "X";
+  alertClosePopup.addEventListener("click", deletePopupAlert);
+  popupAlertHolderTmp.append(alertClosePopup);
+  let alertMessage = document.createElement("div");
+  alertMessage.id = "popupAlertMessage";
+  alertMessage.innerHTML = alertData;
+  popupAlertHolderTmp.append(alertMessage);
+  popupAlertHolderTmp.style.display = "block";
+  document.getElementById("popupAlertHolder").append(popupAlertHolderTmp);
 }
 
 function createPopupAlert(campground, alertText) {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
-  // popupAlertHolder.removeChild(popupAlertHolder.firstChild);
-  // popupAlertHolder = document.createElement("div");
-  // popupAlertHolder.className = "popupAlertHolder";
 
-  let popupAlert = document.createElement("div");
-  popupAlert.className = "popupAlert";
-  popupAlert.innerHTML = alertText;
-  let popupAlertClose = document.createElement("div");
-  popupAlertClose.className = "closeAlert";
-  popupAlertClose.innerHTML = "CLOSE MESSAGE";
-  popupAlertClose.addEventListener("click", deletePopupAlert);
-  popupAlert.append(popupAlertClose);
-  popupAlertHolder.append(popupAlert);
-  let body = document.getElementsByTagName("body")[0];
-  body.append(popupAlertHolder);
+  // let popupAlert = document.createElement("div");
+  // popupAlert.className = "popupAlert";
+  // popupAlert.innerHTML = alertText;
+  // let popupAlertClose = document.createElement("div");
+  // popupAlertClose.className = "closeAlert";
+  // popupAlertClose.innerHTML = "CLOSE MESSAGE";
+  // popupAlertClose.addEventListener("click", deletePopupAlert);
+  // popupAlert.append(popupAlertClose);
+  // popupAlertHolder.append(popupAlert);
+  // let body = document.getElementsByTagName("body")[0];
+  // body.append(popupAlertHolder);
 }
 
 function displayCampgroundList(campgroundDivs) {
@@ -221,7 +236,8 @@ function buildCampgroundList(campgrounds) {
       facilityAlert.innerHTML = "!! ALERT !!";
       let tmpAlert = alertTypes[Math.floor(Math.random() * 4)];
       element.addEventListener("click", function() {
-        createPopupAlert(campgrounds[x], tmpAlert);
+        // createPopupAlert(campgrounds[x], tmpAlert);
+        openPopupAlert(campgrounds[x], tmpAlert);
       });
     }
     element.append(facilityAlert);
