@@ -48,22 +48,34 @@ footer {
   float: right;
 }
 
-#popupAlertHolder {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  align-items: center;
+#popupAlertHolderTmp {
+  display: none;
+  background-color: red;
+  position: relative;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  -ms-transform: translateY(-50%) translate(-50%);
+  transform: translateY(-50%) translate(-50%);
 }
 
-.popupAlert {
-  /* display: none; */
-  
-  position: absolute;
-  background-color: pink;
+#popupAlertFacilityName {
+  padding: 0 10px 10px 0;
 }
 
-.closeAlert {
+#closePopupAlert {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2em;
+}
+
+#popupAlertMessage {
+  color: #ff0000;
+  background-color: #ffffff;
+  top: 50px;
+  margin: 0 10px;
+  border: 1px solid #ff0000;
+  padding: 10px;
 }
