@@ -29,8 +29,9 @@ footer {
 }
 
 #listBody {
-  height: 100px;
+  height: 150px;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .campgroundItem {
