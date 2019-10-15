@@ -156,6 +156,10 @@ function deletePopupAlert() {
   popupAlertHolder.parentNode.removeChild(popupAlertHolder);
 }
 
+function openPopupAlert(alertData) {
+  
+}
+
 function createPopupAlert(alertText) {
   let popupAlertHolder = document.getElementsByClassName("popupAlertHolder")[0];
   if (popupAlertHolder) {
