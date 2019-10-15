@@ -241,6 +241,8 @@ function getCampgrounds(state) {
   }
   if (selectedCampgrounds.length > 0) {
     displayCampgroundList(buildCampgroundList(selectedCampgrounds));
+  } else {
+    document.getElementById("campgroundList").innerHTML = "";
   }
 }
 
