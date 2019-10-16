@@ -151,7 +151,7 @@ document.getElementById("selectStateButton").addEventListener("click", stateSear
 
 function deletePopupAlert() {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
-  popupAlertHolder.removeChild(document.getElementById("popupAlertHolderTmp"));
+  popupAlertHolder.innerHTML = "";
   popupAlertHolder.style.display = "none";
 }
 
