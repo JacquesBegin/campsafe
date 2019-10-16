@@ -155,10 +155,10 @@ function deletePopupAlert() {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
   // popupAlertHolder.parentNode.removeChild(popupAlertHolder);
   popupAlertHolder.removeChild(document.getElementById("popupAlertHolderTmp"));
+  popupAlertHolder.style.display = "none";
 }
 
 function openPopupAlert(campgroundData, alertData) {
-  // let popupAlertHolder = document.getElementById("popupAlertHolder");
   let popupAlertHolderTmp = document.createElement("div");
   popupAlertHolderTmp.id = "popupAlertHolderTmp";
   let alertFacilityName = document.createElement("div");
@@ -175,7 +175,9 @@ function openPopupAlert(campgroundData, alertData) {
   alertMessage.innerHTML = alertData;
   popupAlertHolderTmp.append(alertMessage);
   popupAlertHolderTmp.style.display = "block";
-  document.getElementById("popupAlertHolder").append(popupAlertHolderTmp);
+  let popupAlertHolder = document.getElementById("popupAlertHolder");
+  popupAlertHolder.append(popupAlertHolderTmp);
+  popupAlertHolder.style.display = "block";
 }
 
 function createPopupAlert(campground, alertText) {
