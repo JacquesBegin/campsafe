@@ -174,7 +174,6 @@ function openPopupAlert(campgroundData, alertData) {
   alertMessage.id = "popupAlertMessage";
   alertMessage.innerHTML = alertData;
   popupAlertHolderTmp.append(alertMessage);
-  popupAlertHolderTmp.style.display = "block";
   let popupAlertHolder = document.getElementById("popupAlertHolder");
   popupAlertHolder.append(popupAlertHolderTmp);
   popupAlertHolder.style.display = "block";
