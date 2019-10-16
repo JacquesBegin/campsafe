@@ -177,6 +177,11 @@ function openPopupAlert(campgroundData, alertData) {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
   popupAlertHolder.append(popupAlertHolderTmp);
   popupAlertHolder.style.display = "block";
+  popupAlertHolder.addEventListener("click", function(event) {
+    if (event.target === popupAlertHolder) {
+      deletePopupAlert();
+    }
+  });
 }
 
 function createPopupAlert(campground, alertText) {
@@ -264,7 +269,6 @@ function getCampgrounds(state) {
     document.getElementById("campgroundList").innerHTML = "";
   }
 }
-
 
 
 
