@@ -1,6 +1,7 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 10px;
+  user-select: none;
 }
 
 footer {
@@ -81,6 +82,10 @@ footer {
   top: 10px;
   right: 10px;
   font-size: 1.2em;
+}
+
+#closePopupAlert:hover {
+  background-color: #c90101;
 }
 
 #popupAlertMessage {
