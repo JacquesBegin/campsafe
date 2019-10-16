@@ -147,13 +147,10 @@ function stateSearch() {
   // the server has been setup.
   // console.log(`Returned from fetch: ${fetchState(state)}`);
 }
-
 document.getElementById("selectStateButton").addEventListener("click", stateSearch);
-
 
 function deletePopupAlert() {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
-  // popupAlertHolder.parentNode.removeChild(popupAlertHolder);
   popupAlertHolder.removeChild(document.getElementById("popupAlertHolderTmp"));
   popupAlertHolder.style.display = "none";
 }
@@ -184,22 +181,6 @@ function openPopupAlert(campgroundData, alertData) {
   });
 }
 
-function createPopupAlert(campground, alertText) {
-  let popupAlertHolder = document.getElementById("popupAlertHolder");
-
-  // let popupAlert = document.createElement("div");
-  // popupAlert.className = "popupAlert";
-  // popupAlert.innerHTML = alertText;
-  // let popupAlertClose = document.createElement("div");
-  // popupAlertClose.className = "closeAlert";
-  // popupAlertClose.innerHTML = "CLOSE MESSAGE";
-  // popupAlertClose.addEventListener("click", deletePopupAlert);
-  // popupAlert.append(popupAlertClose);
-  // popupAlertHolder.append(popupAlert);
-  // let body = document.getElementsByTagName("body")[0];
-  // body.append(popupAlertHolder);
-}
-
 function displayCampgroundList(campgroundDivs) {
   console.log("campgroundDivs:", campgroundDivs);
 
@@ -209,7 +190,6 @@ function displayCampgroundList(campgroundDivs) {
   let listHeader = document.createElement("div");
   let listBody = document.createElement("div");
   listHeader.innerHTML = "Available Campgrounds";
-  //styles are not being applied
   listHeader.id = "listHeader";
   listBody.id = "listBody";
   campgroundSection.append(listHeader);
@@ -242,7 +222,6 @@ function buildCampgroundList(campgrounds) {
       facilityAlert.innerHTML = "!! ALERT !!";
       let tmpAlert = alertTypes[Math.floor(Math.random() * 4)];
       element.addEventListener("click", function() {
-        // createPopupAlert(campgrounds[x], tmpAlert);
         openPopupAlert(campgrounds[x], tmpAlert);
       });
     }
