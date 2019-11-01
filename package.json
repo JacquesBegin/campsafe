@@ -1,0 +1,26 @@
+{
+  "name": "campsafe",
+  "version": "1.0.0",
+  "description": "Providing information about campgrounds.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacquesBegin/campsafe.git"
+  },
+  "author": "Jacques and Zac",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JacquesBegin/campsafe/issues"
+  },
+  "homepage": "https://github.com/JacquesBegin/campsafe#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
