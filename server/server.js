@@ -7,6 +7,10 @@ app.get("/hello", (req,res) => {
   res.send("Hello World");
 });
 
+app.get("/", (req, res) => {
+  res.send("Home");
+});
+
 // Starts the server to listen on 
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`);
