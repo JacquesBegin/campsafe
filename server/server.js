@@ -15,6 +15,18 @@ app.get("/", (req, res) => {
   res.send("Home");
 });
 
+app.post("/", (req, res) => {
+  res.send("Received POST HTTP method");
+});
+
+app.put("/", (req, res) => {
+  res.send("Received PUT HTTP method");
+});
+
+app.delete("/", (req, res) => {
+  res.send("Received DELETE HTTP method");
+});
+
 // Starts the server to listen on 
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`);
