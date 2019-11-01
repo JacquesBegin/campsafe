@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = 7000;
+
+app.use(cors());
 
 app.get("/campgrounds", (req,res) => {
   res.send("Campgrounds");
