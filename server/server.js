@@ -1,8 +1,8 @@
 const express = require("express");
 
 const app = express();
-const port = 7000;
+const PORT = 7000;
 
-app.listen(port, () => {
-  console.log(`Server is listening on port: ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is listening on port: ${PORT}`);
 });
