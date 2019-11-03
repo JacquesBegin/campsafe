@@ -19,7 +19,11 @@ app.get("/campgrounds/", (req,res) => {
   res.send("Campgrounds");
 });
 
+
+// Make a call from the front end to this route to get all campgrounds
+// for the selected state.
 app.get("/campgrounds/:state", (req,res) => {
+  // TODO res.json()
   res.send("Campgrounds");
 });
 
