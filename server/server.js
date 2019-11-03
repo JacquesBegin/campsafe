@@ -7,25 +7,32 @@ const PORT = process.env.PORT;
 
 app.use(cors());
 
-app.get("/campgrounds", (req,res) => {
-  res.send("Campgrounds");
-});
 
 app.get("/", (req, res) => {
   res.send("Home");
 });
 
-app.post("/", (req, res) => {
-  res.send("Received POST HTTP method");
+
+
+
+
+app.get("/campgrounds/:state", (req,res) => {
+  res.send("Campgrounds");
 });
 
-app.put("/", (req, res) => {
-  res.send("Received PUT HTTP method");
-});
 
-app.delete("/", (req, res) => {
-  res.send("Received DELETE HTTP method");
-});
+
+// app.post("/", (req, res) => {
+//   res.send("Received POST HTTP method");
+// });
+
+// app.put("/", (req, res) => {
+//   res.send("Received PUT HTTP method");
+// });
+
+// app.delete("/", (req, res) => {
+//   res.send("Received DELETE HTTP method");
+// });
 
 // Starts the server to listen on 
 app.listen(PORT, () => {
