@@ -6,10 +6,11 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(cors());
+app.use("/static", express.static("public"));
 
 
 app.get("/", (req, res) => {
-  res.send("Home");
+  res.sendFile()
 });
 
 
