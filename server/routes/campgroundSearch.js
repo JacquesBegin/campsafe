@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
   res.send("Campground Route");
 });
 
-router.get("/campground/:state", (req, res) => {
+router.get("/:state", (req, res) => {
 res.send("Campgrounds for a state");
 });
 
