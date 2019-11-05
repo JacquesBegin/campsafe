@@ -151,11 +151,11 @@ async function stateSearch() {
     },
     body: JSON.stringify({ 
       state: "CO" })
-  }).then(response => { 
-    return response.text()
-
+  }).then(res => { 
+     console.log(JSON.stringify(res))
+    return res;
   })
-  console.log(JSON.stringify(response));
+  console.log(await response.json());
 
   
   // Use the following line to fetch the campground list once
