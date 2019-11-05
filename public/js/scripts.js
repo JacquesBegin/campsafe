@@ -148,8 +148,10 @@ async function stateSearch() {
     method: "POST",
     body: JSON.stringify({ 
       state: "CO" })
-  }).then(response => response.text()
-  )
+  }).then(response => { 
+    return response.text()
+
+  })
   console.log(JSON.stringify(response));
 
   
