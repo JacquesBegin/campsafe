@@ -7,8 +7,7 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
   console.log(`req.body1: ${JSON.stringify(req.body)}`);
-  console.log(`req.body2: ${req.body}`);
-  res.send({ message: "Campground Route" });
+  res.json({ message: "Campground Route" });
 
 });
 
