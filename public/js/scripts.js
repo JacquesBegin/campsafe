@@ -145,9 +145,12 @@ async function stateSearch() {
   // getCampgrounds(state);
 
   const response = await fetch("campgrounds", { 
-    body: { state: "CO" }
-  });
-  console.log(response);
+    method: "POST",
+    body: JSON.stringify({ 
+      state: "CO" })
+  }).then(response => response.text()
+  )
+  console.log(JSON.stringify(response));
 
   
   // Use the following line to fetch the campground list once
