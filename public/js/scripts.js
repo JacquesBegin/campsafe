@@ -146,6 +146,9 @@ async function stateSearch() {
 
   const response = await fetch("campgrounds", { 
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({ 
       state: "CO" })
   }).then(response => { 
