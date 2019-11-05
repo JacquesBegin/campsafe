@@ -6,8 +6,8 @@ const router = express.Router();
 // and what data is being searched for.
 
 router.post("/", (req, res) => {
-  console.log(`req.body: ${JSON.stringify(req.body)}`);
-  console.log(`req.body: ${req.body}`);
+  console.log(`req.body1: ${JSON.stringify(req.body)}`);
+  console.log(`req.body2: ${req.body}`);
   res.send({ message: "Campground Route" });
 
 });
