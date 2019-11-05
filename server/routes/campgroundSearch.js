@@ -5,9 +5,10 @@ const router = express.Router();
 // Possibly create a log file that tracks each time a route is called 
 // and what data is being searched for.
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
   console.log(`req.body: ${JSON.stringify(req.body)}`);
-  res.send("Campground Route");
+  console.log(`req.body: ${req.body}`);
+  res.send({ message: "Campground Route" });
 
 });
 
