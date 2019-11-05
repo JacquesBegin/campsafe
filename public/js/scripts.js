@@ -139,9 +139,16 @@ function populateStateList(stateList) {
 }
 populateStateList(states);
 
-function stateSearch() {
+async function stateSearch() {
   let state = document.getElementById("selectStateList").value;
-  getCampgrounds(state);
+  // Only for testing
+  // getCampgrounds(state);
+
+  const response = await fetch("campgrounds", { 
+    body: { state: "CO" }
+  });
+  console.log(response);
+
   
   // Use the following line to fetch the campground list once
   // the server has been setup.
