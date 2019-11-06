@@ -1,6 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const xml2json = require("xml2js")
+
+const apiKey = process.env.CAMP_API_KEY;
 
 
 // Possibly create a log file that tracks each time a route is called 
@@ -9,7 +12,7 @@ const xml2json = require("xml2js")
 router.post("/", (req, res) => {
   // Use req.body to retrieve parameters to use in Active api URL
   console.log(`req.body1: ${JSON.stringify(req.body)}`);
-  
+
   // Convert from xml to json
 
 
