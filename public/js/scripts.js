@@ -150,7 +150,7 @@ async function stateSearch() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ 
-      state: "CO" })
+      pstate: state })
   }).then(res => { 
      console.log(JSON.stringify(res))
     return res;
