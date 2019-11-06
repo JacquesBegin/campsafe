@@ -1,12 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const xml2json = require("xml2js")
 
 
 // Possibly create a log file that tracks each time a route is called 
 // and what data is being searched for.
 
 router.post("/", (req, res) => {
+  // Use req.body to retrieve parameters to use in Active api URL
   console.log(`req.body1: ${JSON.stringify(req.body)}`);
+  
+  // Convert from xml to json
+
+
+  // Use this to send data back
   res.json({ message: "Campground Route" });
 
 });
