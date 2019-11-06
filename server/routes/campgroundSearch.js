@@ -30,15 +30,23 @@ let queryParams = {
 router.post("/", (req, res) => {
   // Use req.body to retrieve parameters to use in Active api URL
   console.log(`req.body1: ${JSON.stringify(req.body)}`);
+  let bodyParams = JSON.stringify(req.body);
 
+  // Initial URL for Active API
   let URL = `http://api.amp.active.com/camping/campgrounds?`;
-  let URL_api_key = `&api_key=${apiKey}`;
+  // Add api_key to the end of the query string
+  let URL_api_key = `api_key=${apiKey}`;
 
   // Build query string from the req.body params
-  for ()
+  for (let key in bodyParams) {
+    if (bodyParams[key]) {
+      URL += `${key}=${bodyParams[key]}&`
+    }
+  }
 
   // Make call to Active API to retrieve campgrounds for a State
-  fetch("")
+  console.log(`${URL}${URL_api_key}`);
+  // fetch(`${URL}${URL_api_key}`)
 
   // Convert from xml to json
 
