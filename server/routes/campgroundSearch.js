@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
+const fs = require("fs");
 const xml2json = require("xml2js")
 
 const apiKey = process.env.CAMP_API_KEY;
@@ -49,10 +50,20 @@ router.post("/", (req, res) => {
   // Make call to Active API to retrieve campgrounds for a State
   console.log(`${URL}${URL_api_key}`);
   fetch(`${URL}${URL_api_key}`)
-  .then(res => {
-    console.log(`res.text(): ${res.text()}`);
-    return res.text()
+  .then(data => {
+    return data.text();
   })
+  .then(data => {
+    console.log(`data.text(): ${data}`);
+    if (bodyParams.pstate) {
+      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}`, data, (err) => {
+        if (err) throw err;
+        console.log(`Saved pstate: ${bodyParams.pstate}`);
+      })
+    }
+    return data;
+  })
+  .catch(err => console.error(err));
 
   // Convert from xml to json
 
