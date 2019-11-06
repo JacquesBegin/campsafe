@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
 const fs = require("fs");
-const xml2json = require("xml2js")
+const xml2json = require("xml2js").parseString;
 
 const apiKey = process.env.CAMP_API_KEY;
 
@@ -54,9 +54,16 @@ router.post("/", (req, res) => {
     return data.text();
   })
   .then(data => {
-    console.log(`data.text(): ${data}`);
+    let tempResult;
+    xml2json(data, (err, result) => {
+      tempResult = result;
+    })
+    return tempResult;
+  })
+  .then(data => {
+    console.log(`data: ${JSON.stringify(data)}`);
     if (bodyParams.pstate) {
-      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}`, data, (err) => {
+      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, JSON.stringify(data), (err) => {
         if (err) throw err;
         console.log(`Saved pstate: ${bodyParams.pstate}`);
       })
