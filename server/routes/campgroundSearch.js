@@ -48,7 +48,11 @@ router.post("/", (req, res) => {
 
   // Make call to Active API to retrieve campgrounds for a State
   console.log(`${URL}${URL_api_key}`);
-  // fetch(`${URL}${URL_api_key}`)
+  fetch(`${URL}${URL_api_key}`)
+  .then(res => {
+    console.log(`res.text(): ${res.text()}`);
+    return res.text()
+  })
 
   // Convert from xml to json
 
