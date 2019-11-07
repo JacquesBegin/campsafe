@@ -62,21 +62,26 @@ router.post("/", (req, res) => {
     return tempResult;
   })
   .then(data => {
+    let jsonData = JSON.stringify(data);
     // Create a file with response data
-    console.log(`data: ${JSON.stringify(data)}`);
+    console.log(`data: ${jsonData}`);
     if (bodyParams.pstate) {
-      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, JSON.stringify(data), (err) => {
+      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, jsonData, (err) => {
         if (err) throw err;
         console.log(`Saved pstate: ${bodyParams.pstate}`);
       })
     }
-    return data;
+    return jsonData;
+  })
+  .then(data => {
+    // Use this to send data back
+    res.json({ data });
   })
   .catch(err => console.error(err));
 
 
   // Use this to send data back
-  res.json({ message: "Campground Route" });
+  // res.json({ message: "Campground Route" });
 
 });
 
