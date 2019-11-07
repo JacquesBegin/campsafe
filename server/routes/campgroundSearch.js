@@ -79,7 +79,8 @@ router.post("/", (req, res) => {
     let dataObject = JSON.parse(data);
     let dataArray = [];
     for (let ele of dataObject.result) {
-      let facilityID = element["$"]["facilityID"]
+      let facilityID = element["$"]["facilityID"];
+      let facilityName = element["$"]["facilityName"];
     }
     // Use this to send data back
     res.json({ data });
