@@ -54,6 +54,7 @@ router.post("/", (req, res) => {
     return data.text();
   })
   .then(data => {
+    // Convert from xml to json
     let tempResult;
     xml2json(data, (err, result) => {
       tempResult = result;
@@ -61,6 +62,7 @@ router.post("/", (req, res) => {
     return tempResult;
   })
   .then(data => {
+    // Create a file with response data
     console.log(`data: ${JSON.stringify(data)}`);
     if (bodyParams.pstate) {
       fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, JSON.stringify(data), (err) => {
@@ -71,8 +73,6 @@ router.post("/", (req, res) => {
     return data;
   })
   .catch(err => console.error(err));
-
-  // Convert from xml to json
 
 
   // Use this to send data back
