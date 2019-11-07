@@ -25,6 +25,8 @@ let queryParams = {
 }
 
 
+
+
 // TODO Possibly create a log file that tracks each time a route is called 
 // and what data is being searched for.
 
@@ -74,6 +76,11 @@ router.post("/", (req, res) => {
     return jsonData;
   })
   .then(data => {
+    let dataObject = JSON.parse(data);
+    let dataArray = [];
+    for (let ele of dataObject.result) {
+      let facilityID = element["$"]["facilityID"]
+    }
     // Use this to send data back
     res.json({ data });
   })
