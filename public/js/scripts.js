@@ -152,7 +152,6 @@ async function stateSearch() {
     body: JSON.stringify({ 
       pstate: state })
   }).then(res => { 
-     console.log(JSON.stringify(res))
     return res;
   })
   console.log(await response.json());
