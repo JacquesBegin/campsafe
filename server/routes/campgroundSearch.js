@@ -79,10 +79,6 @@ router.post("/", (req, res) => {
   })
   .catch(err => console.error(err));
 
-
-  // Use this to send data back
-  // res.json({ message: "Campground Route" });
-
 });
 
 router.get("/:state", (req, res) => {
