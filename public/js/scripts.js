@@ -1,72 +1,3 @@
-
-const campgrounds = [
-  {
-    contractID: "KOA",
-    contractType: "PRIVATE",
-    facilityID: "191502",
-    facilityName: "Alamosa KOA",
-    facilityPhoto: "/photos/image.jpg",
-    latitude: "37.4744444",
-    longitude: "-105.7986111",
-    sitesWithAmps: "Y",
-    sitesWithPetsAllowed: "Y",
-    sitesWithSewerHookup: "N",
-    sitesWithWaterHookup: "Y",
-    sitesWithWaterfront: "",
-    state: "ID"
-  },
-  {
-    contractID: "NRSO",
-    contractType: "FEDERAL",
-    facilityID: "70685",
-    facilityName: "Acadia National Park",
-    facilityPhoto: "/photos/image.jpg",
-    latitude: "37.4744444",
-    longitude: "-105.7986111",
-    sitesWithAmps: "Y",
-    sitesWithPetsAllowed: "Y",
-    sitesWithSewerHookup: "N",
-    sitesWithWaterHookup: "N",
-    sitesWithWaterfront: "Y",
-    state: "ME"
-  },
-  {
-    contractID: "UTSP",
-    contractType: "STATE",
-    facilityID: "61928",
-    facilityName: "Bear Lake State Park",
-    facilityPhoto: "/photos/image.jpg",
-    latitude: "37.4744444",
-    longitude: "-105.7986111",
-    sitesWithAmps: "N",
-    sitesWithPetsAllowed: "Y",
-    sitesWithSewerHookup: "N",
-    sitesWithWaterHookup: "N",
-    sitesWithWaterfront: "N",
-    state: "UT"
-  },
-  {
-    facilityName: "Great Big State Park",
-    state: "AL"
-  },
-  {
-    facilityName: "Great Small State Park",
-    state: "AL"
-  },
-  {
-    facilityName: "Rocky Road Highlands",
-    state: "AL"
-  },
-  {
-    facilityName: "The Arches",
-    state: "AL"
-  },
-  {
-    facilityName: "Red Fire Mountains",
-    state: "AL"
-  }
-];
-
 const alertTypes = [
   "Bear spotted in the park! Use proper food storage techniques.",
   "Heavy rain is forecasted for this area. Flooding could occur!",
@@ -126,7 +57,6 @@ const states = {
   WI: "Wisconsin",
   WY: "Wyoming"
 };
-
 
 function populateStateList(stateList) {
   let statesElement = document.getElementById("selectStateList");
