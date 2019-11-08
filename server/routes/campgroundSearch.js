@@ -77,12 +77,17 @@ router.post("/", (req, res) => {
   })
   .then(data => {
     let dataObject = JSON.parse(data);
+    console.log(typeof dataObject);
     let dataArray = [];
-    for (let ele of dataObject.result) {
-      let facilityID = element["$"]["facilityID"];
-      let facilityName = element["$"]["facilityName"];
-      let latitude = element["$"]["latitude"];
-      let longitude = element["$"]["longitude"];
+    for (let element of dataObject.result) {
+      let siteObj = {
+        facilityID: element["$"]["facilityID"],
+        facilityName: element["$"]["facilityName"],
+        latitude: element["$"]["latitude"],
+        longitude: element["$"]["longitude"],
+        state: element["$"]["state"]
+      }
+      console.log("siteObj:", siteObj);
     }
     // Use this to send data back
     res.json({ data });
