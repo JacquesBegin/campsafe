@@ -78,8 +78,11 @@ router.post("/", (req, res) => {
   .then(data => {
     let dataObject = JSON.parse(data);
     console.log(typeof dataObject);
+    console.log(dataObject);
+    console.log(typeof dataObject.resultset.result);
+    console.log(dataObject.resultset.result);
     let dataArray = [];
-    for (let element of dataObject.result) {
+    for (let element of dataObject.resultset.result) {
       let siteObj = {
         facilityID: element["$"]["facilityID"],
         facilityName: element["$"]["facilityName"],
@@ -89,8 +92,8 @@ router.post("/", (req, res) => {
       }
       console.log("siteObj:", siteObj);
       dataArray.push(siteObj);
-      return dataArray;
     }
+    return dataArray;
   })
   .then(data => res.json({ data }))
   .catch(err => console.error(err));
