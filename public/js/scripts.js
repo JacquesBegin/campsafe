@@ -87,6 +87,10 @@ async function stateSearch() {
 document.getElementById("selectStateButton").addEventListener("click", stateSearch);
 
 
+function displayCampgrounds(campgrounds) {
+  
+}
+
 
 function deletePopupAlert() {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
