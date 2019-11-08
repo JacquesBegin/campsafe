@@ -79,10 +79,17 @@ async function stateSearch() {
     },
     body: JSON.stringify({ 
       pstate: state })
-  }).then(res => { 
+  })
+  .then(res => {
+    console.log(res);
+    // displayCampgrounds(res.data);
     return res;
   })
+  .catch(err => {
+    console.error(err);
+  })
   console.log(await response.json());
+
 }
 document.getElementById("selectStateButton").addEventListener("click", stateSearch);
 
@@ -90,7 +97,7 @@ document.getElementById("selectStateButton").addEventListener("click", stateSear
 function displayCampgrounds(campgrounds) {
   let list = document.getElementById("campgroundList");
   for (let camp of campgrounds) {
-
+    list.append(camp);
   }
 }
 
