@@ -71,8 +71,6 @@ populateStateList(states);
 
 async function stateSearch() {
   let state = document.getElementById("selectStateList").value;
-  // Only for testing
-  // getCampgrounds(state);
 
   const response = await fetch("campgrounds", { 
     method: "POST",
@@ -85,13 +83,10 @@ async function stateSearch() {
     return res;
   })
   console.log(await response.json());
-
-  
-  // Use the following line to fetch the campground list once
-  // the server has been setup.
-  // console.log(`Returned from fetch: ${fetchState(state)}`);
 }
 document.getElementById("selectStateButton").addEventListener("click", stateSearch);
+
+
 
 function deletePopupAlert() {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
