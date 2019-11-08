@@ -69,20 +69,6 @@ function populateStateList(stateList) {
 }
 populateStateList(states);
 
-function getCampgrounds() {
-  const campgroundData = await campgroundStateSearch();
-  // let selectedCampgrounds = [];
-  // for (let x = 0; x < campgrounds.length; x++) {
-  //   if (campgrounds[x].state === state) {
-  //     selectedCampgrounds.push(campgrounds[x]);
-  //   }
-  // }
-  // if (selectedCampgrounds.length > 0) {
-  //   displayCampgroundList(buildCampgroundList(selectedCampgrounds));
-  // } else {
-  //   document.getElementById("campgroundList").innerHTML = "";
-  // }
-}
 
 async function campgroundStateSearch() {
   let state = document.getElementById("selectStateList").value;
@@ -100,7 +86,32 @@ async function campgroundStateSearch() {
 document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 
 
+function getCampgrounds() {
+  campgroundStateSearch()
+  .then(campgroundData => {
+    console.log(campgroundData.data);
+    displayCampgrounds(campgroundData.data);
+  });
+
+  
+
+  // let selectedCampgrounds = [];
+  // for (let x = 0; x < campgrounds.length; x++) {
+  //   if (campgrounds[x].state === state) {
+  //     selectedCampgrounds.push(campgrounds[x]);
+  //   }
+  // }
+  // if (selectedCampgrounds.length > 0) {
+  //   displayCampgroundList(buildCampgroundList(selectedCampgrounds));
+  // } else {
+  //   document.getElementById("campgroundList").innerHTML = "";
+  // }
+}
+
+
 function displayCampgrounds(campgrounds) {
+  console.log(typeof campgrounds);
+  console.log(`campgrounds: ${campgrounds}`);
   let list = document.getElementById("campgroundList");
   for (let camp of campgrounds) {
     list.append(camp);
