@@ -88,7 +88,10 @@ document.getElementById("selectStateButton").addEventListener("click", stateSear
 
 
 function displayCampgrounds(campgrounds) {
-  
+  let list = document.getElementById("campgroundList");
+  for (let camp of campgrounds) {
+
+  }
 }
 
 
