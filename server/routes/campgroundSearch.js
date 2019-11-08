@@ -88,17 +88,19 @@ router.post("/", (req, res) => {
         state: element["$"]["state"]
       }
       console.log("siteObj:", siteObj);
+      dataArray.push(siteObj);
+      return dataArray;
     }
-    // Use this to send data back
-    res.json({ data });
   })
+  .then(data => res.json({ data }))
   .catch(err => console.error(err));
-
 });
 
 router.get("/:state", (req, res) => {
 res.send("Campgrounds for a state");
 });
+
+
 
 
 module.exports = router;
