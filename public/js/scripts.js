@@ -69,10 +69,25 @@ function populateStateList(stateList) {
 }
 populateStateList(states);
 
-async function stateSearch() {
+function getCampgrounds() {
+  const campgroundData = await campgroundStateSearch();
+  // let selectedCampgrounds = [];
+  // for (let x = 0; x < campgrounds.length; x++) {
+  //   if (campgrounds[x].state === state) {
+  //     selectedCampgrounds.push(campgrounds[x]);
+  //   }
+  // }
+  // if (selectedCampgrounds.length > 0) {
+  //   displayCampgroundList(buildCampgroundList(selectedCampgrounds));
+  // } else {
+  //   document.getElementById("campgroundList").innerHTML = "";
+  // }
+}
+
+async function campgroundStateSearch() {
   let state = document.getElementById("selectStateList").value;
 
-  const response = await fetch("campgrounds", { 
+  const response = await fetch("campgrounds", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -80,18 +95,9 @@ async function stateSearch() {
     body: JSON.stringify({ 
       pstate: state })
   })
-  .then(res => {
-    console.log(res);
-    // displayCampgrounds(res.data);
-    return res;
-  })
-  .catch(err => {
-    console.error(err);
-  })
-  console.log(await response.json());
-
+  return await response.json();
 }
-document.getElementById("selectStateButton").addEventListener("click", stateSearch);
+document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 
 
 function displayCampgrounds(campgrounds) {
@@ -188,19 +194,7 @@ function buildCampgroundList(campgrounds) {
   return campgroundElements;
 }
 
-function getCampgrounds(state) {
-  let selectedCampgrounds = [];
-  for (let x = 0; x < campgrounds.length; x++) {
-    if (campgrounds[x].state === state) {
-      selectedCampgrounds.push(campgrounds[x]);
-    }
-  }
-  if (selectedCampgrounds.length > 0) {
-    displayCampgroundList(buildCampgroundList(selectedCampgrounds));
-  } else {
-    document.getElementById("campgroundList").innerHTML = "";
-  }
-}
+
 
 
 
