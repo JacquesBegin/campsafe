@@ -110,18 +110,27 @@ function getCampgrounds() {
 
 
 function displayCampgrounds(campgrounds) {
-  console.log(`typeof: ${typeof campgrounds}`);
-  console.log(`campgrounds: ${campgrounds}`);
+  // console.log(`typeof: ${typeof campgrounds}`);
+  // console.log(`campgrounds: ${campgrounds}`);
   let list = document.getElementById("campgroundList");
+  list.innerHTML = "";
   for (let camp of campgrounds) {
     
+    let facilityName = document.createElement("p");
     let facilityID = document.createElement("p");
+    let latitude = document.createElement("p");
+    let longitude = document.createElement("p");
+    let state = document.createElement("p");
+    facilityName.innerHTML = camp.facilityName;
     facilityID.innerHTML = camp.facilityID;
-    // let facilityName = element["$"]["facilityName"],
-    // let latitude = element["$"]["latitude"],
-    // let longitude = element["$"]["longitude"],
-    // let state = element["$"]["state"]
+    latitude.innerHTML = camp.latitude;
+    longitude.innerHTML = camp.longitude;
+    state.innerHTML = camp.state;  
+    list.append(facilityName);
     list.append(facilityID);
+    list.append(latitude);
+    list.append(longitude);
+    list.append(state);
   }
 }
 
