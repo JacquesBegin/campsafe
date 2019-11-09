@@ -110,11 +110,18 @@ function getCampgrounds() {
 
 
 function displayCampgrounds(campgrounds) {
-  console.log(typeof campgrounds);
+  console.log(`typeof: ${typeof campgrounds}`);
   console.log(`campgrounds: ${campgrounds}`);
   let list = document.getElementById("campgroundList");
   for (let camp of campgrounds) {
-    list.append(camp);
+    
+    let facilityID = document.createElement("p");
+    facilityID.innerHTML = camp.facilityID;
+    // let facilityName = element["$"]["facilityName"],
+    // let latitude = element["$"]["latitude"],
+    // let longitude = element["$"]["longitude"],
+    // let state = element["$"]["state"]
+    list.append(facilityID);
   }
 }
 
