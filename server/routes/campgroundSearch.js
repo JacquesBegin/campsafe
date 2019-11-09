@@ -42,8 +42,6 @@ router.post("/", (req, res) => {
 
   // Build query string from the req.body params
   for (let key in bodyParams) {
-    console.log(`key: ${key}`);
-    console.log(`bodyParams: ${bodyParams}`);
     if (bodyParams[key]) {
       URL += `${key}=${bodyParams[key]}&`
     }
@@ -66,7 +64,6 @@ router.post("/", (req, res) => {
   .then(data => {
     let jsonData = JSON.stringify(data);
     // Create a file with response data
-    console.log(`data: ${jsonData}`);
     if (bodyParams.pstate) {
       fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, jsonData, (err) => {
         if (err) throw err;
@@ -77,10 +74,10 @@ router.post("/", (req, res) => {
   })
   .then(data => {
     let dataObject = JSON.parse(data);
-    console.log(typeof dataObject);
-    console.log(dataObject);
-    console.log(typeof dataObject.resultset.result);
-    console.log(dataObject.resultset.result);
+    // console.log(typeof dataObject);
+    // console.log(dataObject);
+    // console.log(typeof dataObject.resultset.result);
+    // console.log(dataObject.resultset.result);
     let dataArray = [];
     for (let element of dataObject.resultset.result) {
       let siteObj = {
@@ -90,7 +87,6 @@ router.post("/", (req, res) => {
         longitude: element["$"]["longitude"],
         state: element["$"]["state"]
       }
-      console.log("siteObj:", siteObj);
       dataArray.push(siteObj);
     }
     return dataArray;
