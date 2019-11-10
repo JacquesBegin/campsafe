@@ -83,7 +83,6 @@ async function campgroundStateSearch() {
   })
   return await response.json();
 }
-document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 
 
 function getCampgrounds() {
@@ -93,6 +92,7 @@ function getCampgrounds() {
     displayCampgrounds(campgroundData.data);
   });
 }
+document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 
 
 function displayCampgrounds(campgrounds) {
@@ -137,12 +137,11 @@ async function getCampgroundDetails() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ 
-      pstate: state 
+      // pstate: state 
     })
   })
   return await response.json();
 }
-document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 
 
 function deletePopupAlert() {
