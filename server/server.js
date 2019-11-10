@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 
 // Required Route Files
 const campgrounds = require("./routes/campgroundSearch");
+const campgroundDetails = require("./routes/campgroundDetails");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/static", express.static("public"));
 app.use("/campgrounds", campgrounds);
+app.use("/campgroundDetails", campgroundDetails);
 
 
 // Default route to serve home page
