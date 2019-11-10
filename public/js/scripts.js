@@ -92,20 +92,6 @@ function getCampgrounds() {
     console.log(campgroundData.data);
     displayCampgrounds(campgroundData.data);
   });
-
-  
-
-  // let selectedCampgrounds = [];
-  // for (let x = 0; x < campgrounds.length; x++) {
-  //   if (campgrounds[x].state === state) {
-  //     selectedCampgrounds.push(campgrounds[x]);
-  //   }
-  // }
-  // if (selectedCampgrounds.length > 0) {
-  //   displayCampgroundList(buildCampgroundList(selectedCampgrounds));
-  // } else {
-  //   document.getElementById("campgroundList").innerHTML = "";
-  // }
 }
 
 
@@ -141,6 +127,22 @@ function displayCampgrounds(campgrounds) {
     list.append(document.createElement("hr"));
   }
 }
+
+async function getCampgroundDetails() {
+  // let state = document.getElementById("selectStateList").value;
+
+  const response = await fetch("campgroundDetails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ 
+      pstate: state 
+    })
+  })
+  return await response.json();
+}
+document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 
 
 function deletePopupAlert() {
