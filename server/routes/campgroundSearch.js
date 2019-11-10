@@ -95,6 +95,7 @@ router.post("/", (req, res) => {
   .catch(err => console.error(err));
 });
 
+
 router.get("/:state", (req, res) => {
 res.send("Campgrounds for a state");
 });
