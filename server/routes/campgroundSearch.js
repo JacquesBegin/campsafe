@@ -81,6 +81,7 @@ router.post("/", (req, res) => {
     let dataArray = [];
     for (let element of dataObject.resultset.result) {
       let siteObj = {
+        contractID: element["$"]["contractID"],
         facilityID: element["$"]["facilityID"],
         facilityName: element["$"]["facilityName"],
         latitude: element["$"]["latitude"],
