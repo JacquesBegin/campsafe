@@ -122,6 +122,7 @@ function displayCampgrounds(campgrounds) {
     let latitude = document.createElement("p");
     let longitude = document.createElement("p");
     let state = document.createElement("p");
+    let campgroundButton = document.createElement("button");
     facilityName.innerHTML = `Facility Name - ${camp.facilityName}`;
     contractID.innerHTML = `Contract ID - ${camp.contractID}`;
     facilityID.innerHTML = `Facility ID - ${camp.facilityID}`;
@@ -134,6 +135,7 @@ function displayCampgrounds(campgrounds) {
     list.append(latitude);
     list.append(longitude);
     list.append(state);
+    list.append(campgroundButton);
     list.append(document.createElement("hr"));
   }
 }
