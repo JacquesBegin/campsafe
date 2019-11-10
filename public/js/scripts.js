@@ -122,13 +122,15 @@ function displayCampgrounds(campgrounds) {
     let latitude = document.createElement("p");
     let longitude = document.createElement("p");
     let state = document.createElement("p");
-    let campgroundButton = document.createElement("button");
+    let campgroundButton = document.createElement("input");
     facilityName.innerHTML = `Facility Name - ${camp.facilityName}`;
     contractID.innerHTML = `Contract ID - ${camp.contractID}`;
     facilityID.innerHTML = `Facility ID - ${camp.facilityID}`;
     latitude.innerHTML = `Latitude - ${camp.latitude}`;
     longitude.innerHTML = `Longitude - ${camp.longitude}`;
-    state.innerHTML = `State - ${camp.state}`;  
+    state.innerHTML = `State - ${camp.state}`;
+    campgroundButton.type = "button";
+    campgroundButton.value = "Details";
     list.append(facilityName);
     list.append(contractID);
     list.append(facilityID);
