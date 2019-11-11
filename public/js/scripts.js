@@ -70,7 +70,7 @@ function populateStateList(stateList) {
 populateStateList(states);
 
 
-async function campgroundStateSearch() {
+async function getCampgroundsByState() {
   let state = document.getElementById("selectStateList").value;
 
   const response = await fetch("campgrounds", {
@@ -86,7 +86,7 @@ async function campgroundStateSearch() {
 
 
 function getCampgrounds() {
-  campgroundStateSearch()
+  getCampgroundsByState()
   .then(campgroundData => {
     console.log(campgroundData.data);
     displayCampgrounds(campgroundData.data);
