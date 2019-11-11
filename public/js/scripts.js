@@ -93,6 +93,13 @@ function getCampgrounds() {
   });
 }
 document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
+document.getElementById("selectStateButton").addEventListener("keyup", function(e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    getCampgrounds();
+  }
+});
+
 
 
 function displayCampgrounds(campgrounds) {
@@ -117,6 +124,7 @@ function displayCampgrounds(campgrounds) {
     state.innerHTML = `State - ${camp.state}`;
     campgroundButton.type = "button";
     campgroundButton.value = "Details";
+    campgroundButton.addEventListener("select", getCampgroundDetails);
     list.append(facilityName);
     list.append(contractID);
     list.append(facilityID);
