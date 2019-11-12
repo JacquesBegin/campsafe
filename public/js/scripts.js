@@ -82,6 +82,7 @@ async function getCampgroundsByState() {
       pstate: state 
     })
   })
+  .catch(error => console.error(error));
   return await response.json();
 }
 
@@ -152,6 +153,7 @@ async function getCampgroundDetails(contractID, facilityID) {
       facilityID: facilityID
     })
   })
+  .catch(error => console.error(error));
   return await response.json();
 }
 
