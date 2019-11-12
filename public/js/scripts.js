@@ -94,6 +94,9 @@ function getCampgrounds() {
     displayCampgrounds(campgroundData.data);
   });
 }
+
+
+// Create events for clicking/selecting the State Search button
 document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
 document.getElementById("selectStateButton").addEventListener("keyup", function(e) {
   if (e.keyCode === 13) {
@@ -126,7 +129,7 @@ function displayCampgrounds(campgrounds) {
     campgroundButton.type = "button";
     campgroundButton.value = "Details";
     campgroundButton.addEventListener("click", function(e) {
-      getCampgroundDetails(camp.contractID, camp.facilityID);
+      getDetails(camp.contractID, camp.facilityID);
     });
     list.append(facilityName);
     list.append(contractID);
@@ -158,11 +161,21 @@ async function getCampgroundDetails(contractID, facilityID) {
 }
 
 
+function getDetails(contractID, facilityID) {
+  getCampgroundDetails(contractID, facilityID)
+  .then(data => {
+    console.log("data:", data);
+  })
+}
+
+
 function deletePopupAlert() {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
   popupAlertHolder.innerHTML = "";
   popupAlertHolder.style.display = "none";
 }
+
+
 
 function openPopupAlert(campgroundData, alertData) {
   let popupAlertHolder = document.getElementById("popupAlertHolder");
@@ -190,6 +203,7 @@ function openPopupAlert(campgroundData, alertData) {
   });
 }
 
+
 function displayCampgroundList(campgroundDivs) {
   console.log("campgroundDivs:", campgroundDivs);
 
@@ -208,6 +222,7 @@ function displayCampgroundList(campgroundDivs) {
   }
   campgroundSection.append(listBody);
 }
+
 
 function buildCampgroundList(campgrounds) {
   console.log("campground:", campgrounds);
