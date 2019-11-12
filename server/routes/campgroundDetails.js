@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
+const needle = require("needle");
 const fs = require("fs");
 const xml2json = require("xml2js").parseString;
 
@@ -17,10 +18,10 @@ router.post("/", (req, res) => {
   let URL = `http://api.amp.active.com/camping/campground/details?contractCode=${bodyParams.contractID}&parkId=${bodyParams.facilityID}&api_key=${apiKey}`;
   console.log(URL);
 
-  fetch(URL)
+  needle("get", URL)
   .then(data => {
-    console.log("data", data);
-    return data.text();
+    console.log("data", data.body);
+    return data;
   })
   // .then(data => {
   //   // Convert from xml to json
@@ -63,6 +64,7 @@ router.post("/", (req, res) => {
   // })
   // .then(data => res.json({ data }))
   .catch(err => console.error(err));
+
 });
 
 
