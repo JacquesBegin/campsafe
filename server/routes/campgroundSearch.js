@@ -50,6 +50,7 @@ router.post("/", (req, res) => {
   // Make call to Active API to retrieve campgrounds for a State
   fetch(`${URL}${URL_api_key}`)
   .then(data => {
+    // console.log("data", data);
     return data.text();
   })
   .then(data => {
