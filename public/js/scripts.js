@@ -79,7 +79,8 @@ async function getCampgroundsByState() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ 
-      pstate: state })
+      pstate: state 
+    })
   })
   return await response.json();
 }
@@ -99,7 +100,6 @@ document.getElementById("selectStateButton").addEventListener("keyup", function(
     getCampgrounds();
   }
 });
-
 
 
 function displayCampgrounds(campgrounds) {
@@ -124,7 +124,9 @@ function displayCampgrounds(campgrounds) {
     state.innerHTML = `State - ${camp.state}`;
     campgroundButton.type = "button";
     campgroundButton.value = "Details";
-    campgroundButton.addEventListener("select", getCampgroundDetails);
+    campgroundButton.addEventListener("click", function(e) {
+      getCampgroundDetails(camp.contractID, camp.facilityID);
+    });
     list.append(facilityName);
     list.append(contractID);
     list.append(facilityID);
@@ -136,7 +138,8 @@ function displayCampgrounds(campgrounds) {
   }
 }
 
-async function getCampgroundDetails() {
+
+async function getCampgroundDetails(contractID, facilityID) {
   // let state = document.getElementById("selectStateList").value;
 
   const response = await fetch("campgroundDetails", {
@@ -145,7 +148,8 @@ async function getCampgroundDetails() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ 
-      // pstate: state 
+      contractID: contractID,
+      facilityID: facilityID
     })
   })
   return await response.json();
