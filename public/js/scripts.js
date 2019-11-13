@@ -93,8 +93,8 @@ function displayCampgrounds(campgrounds) {
     // let longitude = document.createElement("p");
     // let state = document.createElement("p");
     // let campgroundButton = document.createElement("input");
-    parkName.innerHTML = `Park Name - ${camp.name}`;
-    parkDescription.innerHTML = `Park Description - ${camp.description}`;
+    parkName.innerHTML = `Campground Name - ${camp.name}`;
+    parkDescription.innerHTML = `Campground Description - ${camp.description}`;
     // facilityID.innerHTML = `Facility ID - ${camp.facilityID}`;
     // latitude.innerHTML = `Latitude - ${camp.latitude}`;
     // longitude.innerHTML = `Longitude - ${camp.longitude}`;
