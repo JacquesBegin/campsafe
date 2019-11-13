@@ -86,31 +86,31 @@ function displayCampgrounds(campgrounds) {
   let list = document.getElementById("campgroundList");
   list.innerHTML = "";
   for (let camp of campgrounds) {
-    let facilityName = document.createElement("p");
-    let contractID = document.createElement("p");
-    let facilityID = document.createElement("p");
-    let latitude = document.createElement("p");
-    let longitude = document.createElement("p");
-    let state = document.createElement("p");
-    let campgroundButton = document.createElement("input");
-    facilityName.innerHTML = `Facility Name - ${camp.facilityName}`;
-    contractID.innerHTML = `Contract ID - ${camp.contractID}`;
-    facilityID.innerHTML = `Facility ID - ${camp.facilityID}`;
-    latitude.innerHTML = `Latitude - ${camp.latitude}`;
-    longitude.innerHTML = `Longitude - ${camp.longitude}`;
-    state.innerHTML = `State - ${camp.state}`;
-    campgroundButton.type = "button";
-    campgroundButton.value = "Details";
-    campgroundButton.addEventListener("click", function(e) {
-      getDetails(camp.contractID, camp.facilityID);
-    });
-    list.append(facilityName);
-    list.append(contractID);
-    list.append(facilityID);
-    list.append(latitude);
-    list.append(longitude);
-    list.append(state);
-    list.append(campgroundButton);
+    let parkName = document.createElement("p");
+    let parkDescription = document.createElement("p");
+    // let facilityID = document.createElement("p");
+    // let latitude = document.createElement("p");
+    // let longitude = document.createElement("p");
+    // let state = document.createElement("p");
+    // let campgroundButton = document.createElement("input");
+    parkName.innerHTML = `Park Name - ${camp.name}`;
+    parkDescription.innerHTML = `Park Description - ${camp.description}`;
+    // facilityID.innerHTML = `Facility ID - ${camp.facilityID}`;
+    // latitude.innerHTML = `Latitude - ${camp.latitude}`;
+    // longitude.innerHTML = `Longitude - ${camp.longitude}`;
+    // state.innerHTML = `State - ${camp.state}`;
+    // campgroundButton.type = "button";
+    // campgroundButton.value = "Details";
+    // campgroundButton.addEventListener("click", function(e) {
+    //   getDetails(camp.contractID, camp.facilityID);
+    // });
+    list.append(parkName);
+    list.append(parkDescription);
+    // list.append(facilityID);
+    // list.append(latitude);
+    // list.append(longitude);
+    // list.append(state);
+    // list.append(campgroundButton);
     list.append(document.createElement("hr"));
   }
 }
@@ -120,14 +120,14 @@ function getCampgrounds() {
   getCampgroundsByState()
   .then(campgroundData => {
     console.log(campgroundData.data);
-    // displayCampgrounds(campgroundData.data);
+    displayCampgrounds(campgroundData.data);
   });
 }
 
 
 // Create events for clicking/selecting the State Search button
 document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
-document.getElementById("selectStateButton").addEventListener("keyup", function(e) {
+document.getElementById("selectStateButton").addEventListener("keypress", function(e) {
   if (e.keyCode === 13) {
     e.preventDefault();
     getCampgrounds();
