@@ -35,64 +35,64 @@ router.post("/", (req, res) => {
   console.log(`req.body1: ${JSON.stringify(req.body)}`);
   let bodyParams = req.body;
 
-  // Initial URL for Active API
-  let URL = `http://api.amp.active.com/camping/campgrounds?`;
+  // Initial URL for NPS API
+  let URL = `https://developer.nps.gov/api/v1/campgrounds?`;
   // Add api_key to the end of the query string
   let URL_api_key = `api_key=${apiKey}`;
 
   // Build query string from the req.body params
   for (let key in bodyParams) {
     if (bodyParams[key]) {
-      URL += `${key}=${bodyParams[key]}&`
+      URL += `${key}=${bodyParams[key].toLowerCase()}&`
     }
   }
 
   // Make call to Active API to retrieve campgrounds for a State
   fetch(`${URL}${URL_api_key}`)
   .then(data => {
-    // console.log("data", data);
-    return data.text();
+    console.log("data", data);
+    // return data.text();
   })
-  .then(data => {
-    // Convert from xml to json
-    let tempResult;
-    xml2json(data, (err, result) => {
-      tempResult = result;
-    })
-    return tempResult;
-  })
-  .then(data => {
-    let jsonData = JSON.stringify(data);
-    // Create a file with response data
-    if (bodyParams.pstate) {
-      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, jsonData, (err) => {
-        if (err) throw err;
-        console.log(`Saved pstate: ${bodyParams.pstate}`);
-      })
-    }
-    return jsonData;
-  })
-  .then(data => {
-    let dataObject = JSON.parse(data);
-    // console.log(typeof dataObject);
-    // console.log(dataObject);
-    // console.log(typeof dataObject.resultset.result);
-    // console.log(dataObject.resultset.result);
-    let dataArray = [];
-    for (let element of dataObject.resultset.result) {
-      let siteObj = {
-        contractID: element["$"]["contractID"],
-        facilityID: element["$"]["facilityID"],
-        facilityName: element["$"]["facilityName"],
-        latitude: element["$"]["latitude"],
-        longitude: element["$"]["longitude"],
-        state: element["$"]["state"]
-      }
-      dataArray.push(siteObj);
-    }
-    return dataArray;
-  })
-  .then(data => res.json({ data }))
+  // .then(data => {
+  //   // Convert from xml to json
+  //   let tempResult;
+  //   xml2json(data, (err, result) => {
+  //     tempResult = result;
+  //   })
+  //   return tempResult;
+  // })
+  // .then(data => {
+  //   let jsonData = JSON.stringify(data);
+  //   // Create a file with response data
+  //   if (bodyParams.pstate) {
+  //     fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, jsonData, (err) => {
+  //       if (err) throw err;
+  //       console.log(`Saved pstate: ${bodyParams.pstate}`);
+  //     })
+  //   }
+  //   return jsonData;
+  // })
+  // .then(data => {
+  //   let dataObject = JSON.parse(data);
+  //   // console.log(typeof dataObject);
+  //   // console.log(dataObject);
+  //   // console.log(typeof dataObject.resultset.result);
+  //   // console.log(dataObject.resultset.result);
+  //   let dataArray = [];
+  //   for (let element of dataObject.resultset.result) {
+  //     let siteObj = {
+  //       contractID: element["$"]["contractID"],
+  //       facilityID: element["$"]["facilityID"],
+  //       facilityName: element["$"]["facilityName"],
+  //       latitude: element["$"]["latitude"],
+  //       longitude: element["$"]["longitude"],
+  //       state: element["$"]["state"]
+  //     }
+  //     dataArray.push(siteObj);
+  //   }
+  //   return dataArray;
+  // })
+  // .then(data => res.json({ data }))
   .catch(err => console.error(err));
 });
 
