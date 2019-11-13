@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
 const fs = require("fs");
-const xml2json = require("xml2js").parseString;
 
 const apiKey = process.env.NPS_API_KEY;
 
@@ -49,29 +48,19 @@ router.post("/", (req, res) => {
 
   // Make call to Active API to retrieve campgrounds for a State
   fetch(`${URL}${URL_api_key}`)
+  .then(data => data.json())
+  .then(data => console.log(data))
   .then(data => {
-    console.log("data", data);
-    // return data.text();
+    let jsonData = JSON.stringify(data);
+    // Create a file with response data
+    if (bodyParams.stateCode) {
+      fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.stateCode}.json`, jsonData, (err) => {
+        if (err) throw err;
+        console.log(`Saved pstate: ${bodyParams.stateCode}`);
+      })
+    }
+    return jsonData;
   })
-  // .then(data => {
-  //   // Convert from xml to json
-  //   let tempResult;
-  //   xml2json(data, (err, result) => {
-  //     tempResult = result;
-  //   })
-  //   return tempResult;
-  // })
-  // .then(data => {
-  //   let jsonData = JSON.stringify(data);
-  //   // Create a file with response data
-  //   if (bodyParams.pstate) {
-  //     fs.writeFile(`${__dirname}/../../dataFiles/${bodyParams.pstate}.json`, jsonData, (err) => {
-  //       if (err) throw err;
-  //       console.log(`Saved pstate: ${bodyParams.pstate}`);
-  //     })
-  //   }
-  //   return jsonData;
-  // })
   // .then(data => {
   //   let dataObject = JSON.parse(data);
   //   // console.log(typeof dataObject);
