@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
-const needle = require("needle");
 const fs = require("fs");
 const xml2json = require("xml2js").parseString;
 
@@ -18,7 +17,8 @@ router.post("/", (req, res) => {
   let URL = `http://api.amp.active.com/camping/campground/details?contractCode=${bodyParams.contractID}&parkId=${bodyParams.facilityID}&api_key=${apiKey}`;
   console.log(URL);
 
-  needle("get", URL)
+  // needle("get", URL, { follow: 50 })
+  fetch(URL)
   .then(data => {
     console.log("data", data.body);
     return data;
