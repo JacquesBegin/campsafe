@@ -1,10 +1,3 @@
-const alertTypes = [
-  "Bear spotted in the park! Use proper food storage techniques.",
-  "Heavy rain is forecasted for this area. Flooding could occur!",
-  "Forest fire near campground! Camping is prohibited until further notice.",
-  "Rock slide on park road 3A! Use alternate routes."
-];
-
 const states = {
   AL: "Alabama",
   AK: "Alaska",
@@ -79,31 +72,12 @@ async function getCampgroundsByState() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ 
-      pstate: state 
+      stateCode: state 
     })
   })
   .catch(error => console.error(error));
   return await response.json();
 }
-
-
-function getCampgrounds() {
-  getCampgroundsByState()
-  .then(campgroundData => {
-    console.log(campgroundData.data);
-    displayCampgrounds(campgroundData.data);
-  });
-}
-
-
-// Create events for clicking/selecting the State Search button
-document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
-document.getElementById("selectStateButton").addEventListener("keyup", function(e) {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    getCampgrounds();
-  }
-});
 
 
 function displayCampgrounds(campgrounds) {
@@ -112,7 +86,6 @@ function displayCampgrounds(campgrounds) {
   let list = document.getElementById("campgroundList");
   list.innerHTML = "";
   for (let camp of campgrounds) {
-    
     let facilityName = document.createElement("p");
     let contractID = document.createElement("p");
     let facilityID = document.createElement("p");
@@ -141,6 +114,27 @@ function displayCampgrounds(campgrounds) {
     list.append(document.createElement("hr"));
   }
 }
+
+
+function getCampgrounds() {
+  getCampgroundsByState()
+  .then(campgroundData => {
+    console.log(campgroundData.data);
+    // displayCampgrounds(campgroundData.data);
+  });
+}
+
+
+// Create events for clicking/selecting the State Search button
+document.getElementById("selectStateButton").addEventListener("click", getCampgrounds);
+document.getElementById("selectStateButton").addEventListener("keyup", function(e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    getCampgrounds();
+  }
+});
+
+
 
 
 async function getCampgroundDetails(contractID, facilityID) {
