@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
   // Make call to Active API to retrieve campgrounds for a State
   fetch(`${URL}${URL_api_key}`)
   .then(data => data.json())
-  .then(data => console.log(data))
+  // .then(data => console.log(data))
   .then(data => {
     let jsonData = JSON.stringify(data);
     // Create a file with response data
@@ -61,27 +61,23 @@ router.post("/", (req, res) => {
     }
     return jsonData;
   })
-  // .then(data => {
-  //   let dataObject = JSON.parse(data);
-  //   // console.log(typeof dataObject);
-  //   // console.log(dataObject);
-  //   // console.log(typeof dataObject.resultset.result);
-  //   // console.log(dataObject.resultset.result);
-  //   let dataArray = [];
-  //   for (let element of dataObject.resultset.result) {
-  //     let siteObj = {
-  //       contractID: element["$"]["contractID"],
-  //       facilityID: element["$"]["facilityID"],
-  //       facilityName: element["$"]["facilityName"],
-  //       latitude: element["$"]["latitude"],
-  //       longitude: element["$"]["longitude"],
-  //       state: element["$"]["state"]
-  //     }
-  //     dataArray.push(siteObj);
-  //   }
-  //   return dataArray;
-  // })
-  // .then(data => res.json({ data }))
+  .then(data => {
+    let dataObject = JSON.parse(data);
+    // console.log(typeof dataObject);
+    // console.log(dataObject);
+    // console.log(typeof dataObject.resultset.result);
+    // console.log(dataObject.resultset.result);
+    let dataArray = [];
+    for (let element of dataObject.data) {
+      let siteObj = {
+        name: element.name,
+        description: element.description
+      }
+      dataArray.push(siteObj);
+    }
+    return dataArray;
+  })
+  .then(data => res.json({ data }))
   .catch(err => console.error(err));
 });
 
